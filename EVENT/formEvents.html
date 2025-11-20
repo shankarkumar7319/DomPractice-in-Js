@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form & Input Events</title>
+</head>
+<body>
+
+    <h1>Form & Input Events Demo</h1>
+    <form id="myForm">
+        <label>Enter your name:</label> <br>
+        <input type="text" id="myInput" placeholder="Type something..."> <br> <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.querySelector('#myForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Form submitted!');
+        });
+
+        // change
+        document.querySelector('#myInput').addEventListener('change', (event) => {
+            alert(`Input changed to: ${event.target.value}`);
+        }); 
+
+        // focus 
+        document.querySelector('#myInput').addEventListener('focus', () => {
+            console.log('Input field focused');
+            
+        });
+
+        // blur 
+        document.querySelector('#myInput').addEventListener('blur', () => { 
+        console.log('Input field lost focus!'); 
+        }); 
+
+        // input 
+        document.querySelector('#myInput').addEventListener('input', (event) => { 
+        console.log(`Current value: ${event.target.value}`); 
+        }); 
+
+        const numbers = [1, 2, 3, 4, 5, 6];
+
+// Step 1: Double each number
+const doubled = numbers.map(num => num * 2);
+
+// Step 2: Keep only numbers greater than 5
+const filtered = doubled.filter(num => num > 5);
+
+// Step 3: Find the sum of remaining numbers
+const total = filtered.reduce((sum, num) => sum + num, 0);
+
+console.log("Doubled:", doubled);   // [2, 4, 6, 8, 10, 12]
+console.log("Filtered:", filtered); // [6, 8, 10, 12]
+console.log("Total:", total);       // 36
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    
+    <style>
+        body {
+            background-color: gray;
+        }
+        form {
+            width: 350px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aqua;
+            padding: 50px;
+          
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Basic Information</legend>
+            <br>
+        <label for="usr">Username:</label>
+        <input type="text" id="usr" name="username"> 
+        <br><br>
+
+        <p style="color: red;" id="error"></p>
+
+        <label for="pwd">Password:</label>
+        <input type="password" name="password" id="pwd">
+        <br> <br>
+        <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+
+    <script>
+        
+        const f = document.querySelector("form");
+
+        f.addEventListener("submit", (e) => {
+           e.preventDefault(); // stop page reload
+
+            let un = document.getElementById("usr").value.trim();
+            let err = document.getElementById("error");
+            
+
+            let pd = document.getElementById("pwd").value;
+            let pdregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if(!pdregex.text(pd)) {
+                alert("Invalid Password");
+            } else {
+                alert("Valid name");
+            }
+           
+            let unregx = /^[A-Za-z]+$/;
+
+           if(un === "") {
+                //alert("username cannot be empty");
+                document.getElementById("error").textContent = "username cannot be empty";
+            }
+            else if(un.length < 2) {
+                document.getElementById("error").textContent = "username must be 2 character";
+            }
+            else if(un.length > 30) {
+                document.getElementById("error").textContent = "Maximum length of character is 30";
+            } 
+            else if(!unregx.test(un)){
+                alert("only letters are allowed");
+            } 
+            else {
+                document.getElementById("error").textContent = "valid name";
+            }
+                
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM attribute</title>
+
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Attribute DOM Manipulation</h2>
+    <img src="https://unsplash.com/s/photos/nature-flower" alt="">This is flower image <br> <br>
+
+    <button onclick="setAtr()">Set Attribute</button>
+    <button onclick="getAtr()">Get Attribute</button>
+    <button onclick="removeAtr()">Remove Attribute</button>
+
+    <script>
+        let link = document.querySelector("img");
+
+        function setAtr() {
+            link.setAttribute("src", "https://unsplash.com/s/photos/nature-flower");
+            link.textContent = "Click here for Image";
+        }
+
+        function getAtr() {
+            //document.writeln(link.getAttribute("href"));
+            let url = link.getAttribute("src");
+            alert("Current src is : " + url);
+        }
+
+        function removeAtr() {
+            link.removeAttribute("src")
+            alert("The 'src' attribute was removed.");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Enter Name</label>
+    <input type="text" name="username" placeholder="First Name">
+    <input type="text" name="username" placeholder="Second Name">
+
+    <button onclick="showValue()">Click Me</button>
+
+   <!-- <p id="demo" style="color: green;"></p>-->
+
+    <!--agar yaha selector nahi rahega tab hum tag ko select krenge with the help of querySelector-->
+     <p style="color: green;"></p>
+
+    <script>
+        function showValue() {
+            // Get all elements with the name
+            let users = document.getElementsByName("username");
+            let allValues = "Name : ";
+
+            for (let i = 0; i < users.length; i++) {
+                allValues += users[i].value + " ";
+            }
+
+            // Access the element and display trimmed text
+            //document.getElementById("demo").innerText = allValues.trim(); // id selector ke liye 
+            document.querySelector("p").innerText = allValues.trim();
+        }
+    </script>
+</body>
+</html>

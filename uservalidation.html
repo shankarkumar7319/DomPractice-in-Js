@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form>
+        <label for="usr">Username:</label>
+        <input type="text" id="usr" name="username"> 
+        <br><br>
+        <p style="color: red;" id="error"></p>
+
+        <label for="pwd">Password:</label>
+        <input type="password" name="password" id="pwd">
+        <br><br><br>
+        <label for="eml">Email:</label>
+        <input type="email" name="email" id="eml">
+
+        <br><br><br>
+        <label for="ph">Phone</label>
+        <input type="number" name="number" id="ph">
+
+        <p style="color: blue;" id="valid"></p>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        
+        const f = document.querySelector("form");
+
+        f.addEventListener("submit", (e) => {
+           e.preventDefault(); // stop page reload
+
+            let un = document.getElementById("usr").value;
+
+            // for password
+            let pd = document.getElementById("pwd").value;
+            let pdregex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+            
+            let em = document.getElementById("eml").value;
+            let emregex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+            let phn = document.getElementById("ph").value;
+            let pnregex = /^[6-9]\d{9}$/;
+
+            if(!pnregex.test(phn)) {
+                alert("Invalid Number");
+            } else {
+                alert("Valid Number entered");
+            }
+
+            if(!emregex.test(em)) {
+                alert("Invalid email");
+            } else {
+                alert("Valid email");
+            }
+
+            if(!pdregex.test(pd)) {
+                alert("Invalid Password");
+            } 
+            else {
+                alert("valid password");
+            }
+
+            let unregx = /^[A-Za-z]+$/;
+
+            if(un === "") {
+                //alert("username cannot be empty");
+                document.getElementById("error").textContent = "username cannot be empty";
+            }
+            else if(un.length < 2) {
+                document.getElementById("error").textContent = "username must be 2 character";
+            }
+            else if(un.length > 30) {
+                document.getElementById("error").textContent = "Maximum length of character is 30";
+            } 
+            else if(!unregx.test(un)){
+                alert("only letters are allowed");
+            } 
+            else {
+                document.getElementById("valid").textContent = "valid name";
+            }
+        });
+    </script>
+</body>
+</html>

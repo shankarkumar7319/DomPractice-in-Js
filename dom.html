@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+
+    <style>
+        * {
+            background-color: green;
+        }
+        
+        button {
+            background-color: yellow;
+            width: 150px;
+            height: 30px;
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1 id="heading">Heading</h1>
+    <h2 id="h">Heading</h2>
+    <p>Para 1</p>
+    <p>Para 2</p>
+    <p>Para 3</p>
+    <p>Para 4</p>
+
+    <button onclick="change()">click for change</button>
+
+    <script>
+        function change() {
+        document.getElementsByTagName("p")[0].style.color = "red"; // para 1
+        document.getElementsByTagName("p")[1].style.color = "blue";
+        document.getElementsByTagName("p")[2].style.color = "aqua";
+
+        const para = document.getElementsByTagName("p");
+        for(i = 0; i < para.length; i++) {
+            para[i].style.backgroundColor = "pink";
+            para[i].style.fontSize = "30px";
+        }
+        document.getElementById("heading").textContent = "DOM in JavaScript"; // to change the text only 
+        //document.getElementById("h").style.backgroundColor = "red";
+       // document.getElementById("h").style.fontSize = "29px";
+        document.getElementById("h").innerHTML = "<i>DOM JS</i>"; // change the styles
+        
+        }
+        
+    </script>
+</body>
+</html>
